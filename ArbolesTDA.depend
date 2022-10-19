@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1666210614 source:c:\users\alejo\desktop\universidad\programacion\tda\arbolestda\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"arboles.h"
+
+1666210533 c:\users\alejo\desktop\universidad\programacion\tda\arbolestda\arboles.h
+
+1666210553 source:c:\users\alejo\desktop\universidad\programacion\tda\arbolestda\arboles.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"arboles.h"
+
