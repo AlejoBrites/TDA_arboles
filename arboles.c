@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "arboles.h"
+#define TAM 100
 
 struct ArbolesEstruc{
 
@@ -19,11 +20,13 @@ ArbolesP cargararbolvacio(){
      a->altura=-1.11;
      strcpy(a->nombre," #SIN DATOS# ");
 
+return a;
+
 };
 
-void cargararbolesvacios(ArbolesP a[],int tam){
+void cargararbolesvacios(ArbolesP a[]){
 
-     for(int i=0;i<tam;i++){
+     for(int i=3;i<TAM;i++){
 
         a[i]=cargararbolvacio();
 
@@ -31,7 +34,7 @@ void cargararbolesvacios(ArbolesP a[],int tam){
 
 };
 
-ArbolesP leerarboles(ArbolesP a[],int tam){
+ArbolesP leerarboles(ArbolesP a[]){
 
      ArbolesP ar=malloc(sizeof(struct ArbolesEstruc));
 
@@ -66,9 +69,7 @@ ArbolesP transformardatos(char t[100]){
 
             posdelimitadoruno=i;
             i=100;
-
          }
-
        }
 
        int posdelimitadordos=-1;
@@ -79,9 +80,7 @@ ArbolesP transformardatos(char t[100]){
 
             posdelimitadordos=i;
             i=100;
-
           }
-
        }
 
        char nombreaux[20]="";
@@ -89,7 +88,6 @@ ArbolesP transformardatos(char t[100]){
        for(int i=0;i<posdelimitadoruno;i++){
 
            nombreaux[i]=t[i];
-
        }
 
        char edadaux[4]="";
@@ -97,7 +95,6 @@ ArbolesP transformardatos(char t[100]){
        for(int i=posdelimitadoruno+1;i<posdelimitadordos;i++){
 
            edadaux[i-posdelimitadoruno-1]=t[i];
-
        }
 
        char alturaaux[5]="";
@@ -105,7 +102,6 @@ ArbolesP transformardatos(char t[100]){
        for(int i=posdelimitadordos+1;i<posdelimitadordos+5;i++){
 
             alturaaux[i-posdelimitadordos-1]=t[i];
-
        }
 
        strcpy(a->nombre,nombreaux);
@@ -124,11 +120,11 @@ void mostrararbol(ArbolesP a){
      }
 };
 
-void mostrararboles(ArbolesP a[], int tam){
+void mostrararboles(ArbolesP a[]){
 
     printf("\n======================================================================\n");
 
-    for(int i=0;i<tam;i++){
+    for(int i=0;i<TAM;i++){
 
         mostrararbol(a[i]);
 
@@ -136,22 +132,40 @@ void mostrararboles(ArbolesP a[], int tam){
 
 };
 
-ArbolesP agregararboles(char n[20],int e,float al){
+int busquedaarbolvacio(ArbolesP a[]){
 
-    ArbolesP a=malloc(sizeof(struct ArbolesEstruc));
+     int posvacia=-1;
 
-    strcpy(a->nombre,n);
-    a->edad=e;
-    a->altura=al;
+     for(int i=0;i<TAM;i++){
 
-return a;
+        if( a[i]->edad ==-1){
+
+            posvacia=i;
+            i=TAM;
+        }
+     }
+return posvacia;
+}
+
+void agregararboles(ArbolesP a[],char n[20],int e,float al){
+
+    int posvacia=busquedaarbolvacio(a);
+
+    if(posvacia!=-1){
+
+        a[posvacia]->edad=e;
+        a[posvacia]->altura=al;
+        strcpy(a[posvacia]->nombre,n);
+
+    };
+
 };
 
-void modificararbol(ArbolesP a[], int tam){
+void modificararbol(ArbolesP a[]){
 
      printf("\n======================================================================\n");
 
-    for (int i=0;i<tam;i++){
+    for (int i=0;i<TAM;i++){
 
         if(strcmp(a[i]->nombre,"Laurel")==0){
 
@@ -168,9 +182,9 @@ void modificararbol(ArbolesP a[], int tam){
 };
 
 
-void eliminararboles(ArbolesP a[], int tam){
+void eliminararboles(ArbolesP a[]){
 
-   for(int i=0;i<tam;i++){
+   for(int i=0;i<TAM;i++){
 
        if((strcmp(a[i]->nombre,"Cocotero")==0)||(strcmp(a[i]->nombre,"Falsa Acacia")==0)){
 
@@ -182,13 +196,13 @@ void eliminararboles(ArbolesP a[], int tam){
    }
 };
 
-void escribirarboles(ArbolesP a[],int tam){
+void escribirarboles(ArbolesP a[]){
 
-    int i=0;
+    //int i=0;
 
     FILE * archivo=fopen("datos.txt","a");
 
-    for(int i=0;i<tam;i++){
+    for(int i=0;i<TAM ;i++){
 
        if(a[i]->edad!=-1){
          fprintf(archivo,"\n Nombre del arbol: %s//Edad: %d//Altura: %.2f",a[i]->nombre,a[i]->edad,a[i]->altura);

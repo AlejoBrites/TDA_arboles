@@ -2,34 +2,33 @@
 #include <stdlib.h>
 #include <string.h>
 #include "arboles.h"
+#define TAM 100
 
 int main()
 {
 
-    int t=100;
 
-    ArbolesP a1[t];
+    ArbolesP a1[TAM];
 
-    cargararbolesvacios(a1,t);
+    leerarboles(a1);
 
-    leerarboles(a1,t);
-    //mostrararboles(a1,t);
+    cargararbolesvacios(a1);
 
-    a1[3]=agregararboles("Laurel",210,2.55);
-    a1[4]=agregararboles("Secuoya Caucho",150,1.99);
-    a1[5]=agregararboles("Gikgo Biloba",90,1.88);
+    agregararboles(a1,"Laurel",210,2.55);
+    agregararboles(a1,"Secuoya Caucho",150,1.99);
+    agregararboles(a1,"Gikgo Biloba",90,1.88);
 
-    mostrararboles(a1,t);
+    mostrararboles(a1);
 
-    modificararbol(a1,t);
+    modificararbol(a1);
 
-    mostrararboles(a1,t);
+    mostrararboles(a1);
 
-    eliminararboles(a1,t);
+    eliminararboles(a1);
 
-    mostrararboles(a1,t);
+    mostrararboles(a1);
 
-    escribirarboles(a1,t);
+    escribirarboles(a1);
 
     return 0;
 }

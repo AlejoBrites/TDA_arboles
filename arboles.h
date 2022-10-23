@@ -7,23 +7,23 @@ typedef struct ArbolesEstruc * ArbolesP;
 
 ArbolesP cargararbolvacio();
 
-void cargararbolesvacios(ArbolesP a[],int tam);
+void cargararbolesvacios(ArbolesP a[]);
 
-ArbolesP leerarboles(ArbolesP a[],int tam);
+ArbolesP leerarboles(ArbolesP a[]);
 
 ArbolesP transformardatos(char t[100]);
 
 void mostrararbol(ArbolesP a);
 
-void mostrararboles(ArbolesP a[], int tam);
+void mostrararboles(ArbolesP a[]);
 
-ArbolesP agregararboles(char n[],int e,float al);
+void agregararboles(ArbolesP a[],char n[20],int e,float al);
 
-void modificararbol(ArbolesP a[], int tam);
+void modificararbol(ArbolesP a[]);
 
-void eliminararboles(ArbolesP a[], int tam);
+void eliminararboles(ArbolesP a[]);
 
-void escribirarboles(ArbolesP a[],int tam);
+void escribirarboles(ArbolesP a[]);
 
 
 #endif // ARBOLES_H_INCLUDED
